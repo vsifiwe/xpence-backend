@@ -1,10 +1,16 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.db.models.deletion import CASCADE
+from django.conf import settings
+
+
+class User(AbstractUser):
+    phone = models.CharField(max_length=9)
+    REQUIRED_FIELDS = ['phone']
 
 
 class Account(models.Model):
-    owner = models.ForeignKey(User, on_delete=CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=CASCADE)
     account_name = models.CharField(max_length=100)
     currency = models.CharField(max_length=5)
     balance = models.IntegerField(default=0)
@@ -14,7 +20,7 @@ class Account(models.Model):
 
 
 class Category(models.Model):
-    owner = models.ForeignKey(User, on_delete=CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=CASCADE)
     name = models.CharField(max_length=32)
     types_of_transactions = (
         ("income", "income"),

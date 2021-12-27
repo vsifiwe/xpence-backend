@@ -11,12 +11,17 @@ from drf_yasg.utils import swagger_auto_schema
 
 
 # Create your views here.
+class RegisterAPI(GenericAPIView):
+    serializer_class = RegisterSerializer
 
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
 
-@api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
-def hello(request):
-    return Response({"message": "Hello, world!"})
+        return Response({
+            "user": "success"
+        })
 
 
 @api_view(['GET'])

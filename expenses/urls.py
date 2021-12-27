@@ -9,4 +9,5 @@ urlpatterns = [
     path('category/<int:pk>', CategoryDetail.as_view()),
     path('account', AccountList.as_view()),
     path('account/<int:pk>', AccountDetail.as_view()),
+    path('register', RegisterAPI.as_view()),
 ]
