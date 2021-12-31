@@ -27,11 +27,12 @@ SECRET_KEY = 'django-insecure-rj0nfo1!5$d6=(etc+4nr1$usxq#w*8mf$)$933=m98q06bpxz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'https://jolly-einstein-5678de.netlify.app/']
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    'https://jolly-einstein-5678de.netlify.app/'
 ]
 
 AUTH_USER_MODEL = 'expenses.User'
